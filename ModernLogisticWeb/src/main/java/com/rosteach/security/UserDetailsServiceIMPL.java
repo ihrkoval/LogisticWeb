@@ -20,8 +20,9 @@ public class UserDetailsServiceIMPL implements UserDetailsService
  {
 
 //	@Autowired
-//    private EntityManager entityManager; //определить бин "что такое"
-//	
+//    private EntityManager entityManager; 
+//   определить бин "что такое"
+
 	
 	
 	@Override

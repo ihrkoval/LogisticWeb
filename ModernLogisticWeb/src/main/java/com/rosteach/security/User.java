@@ -1,5 +1,5 @@
 package com.rosteach.security;
-
+//test user class
 public class User {
 
 	 private String login;
