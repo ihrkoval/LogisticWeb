@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +26,22 @@ public class GetReestrForaVeres{
 		this.jdbcTemplate = (new JdbcTemplate(dataSource));
 	}
 	*/
+	
+	@Autowired
+    private EntityManager em; 
+	
+	
 	public List<ReestrForaVeres> getData(java.sql.Date startDate, java.sql.Date endDate){
 		
 		final String query = "select docdate,regnumber,clientsname,clientadresslocation,comment1,foundation,mainsumm "+
 				  "from SPROUTCOMEINVOICE (820,Null,'"+
 				  startDate+"','"+endDate+"',0,0, Null,0,0)";
+		
+		Query sqlQuery = em.createQuery(query);
 	
+		System.out.println(sqlQuery.getSingleResult().toString());
+		
+		
 		List<ReestrForaVeres> reestr= this.jdbcTemplate.query(query, new RowMapper<ReestrForaVeres>(){
 			public ReestrForaVeres mapRow(ResultSet resultSet, int rowNum) throws SQLException{
 				ReestrForaVeres rfv = new ReestrForaVeres();

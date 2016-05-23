@@ -4,7 +4,7 @@ package com.rosteach.security;
 import java.util.HashSet;
 import java.util.Set;
 
-
+import javax.persistence.EntityManager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -19,9 +19,9 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceIMPL implements UserDetailsService 
  {
 
-//	@Autowired
-//    private EntityManager entityManager; 
-//   определить бин "что такое"
+	@Autowired
+    private EntityManager entityManager; 
+ 
 
 	
 	

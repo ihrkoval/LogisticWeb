@@ -1,5 +1,9 @@
 package com.rosteach.security;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -12,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
-import org.springframework.web.servlet.view.XmlViewResolver;
 
 @Configuration
 @ComponentScan("com.rosteach")
@@ -25,6 +28,12 @@ public class AppConfig extends WebMvcConfigurerAdapter  {
 	    registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	    
 	}
+	
+	@Bean
+    public EntityManager entityManager() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("alter"); //alter
+        return emf.createEntityManager();
+    }
 	
 	@Bean
     public UrlBasedViewResolver setupViewResolver() {
